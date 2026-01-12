@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { CharacterCard } from "./character-card";
 import type { CharacterWithCategory } from "@/lib/database.types";
-import { Swords } from "lucide-react";
+import { Heart, Sparkles } from "lucide-react";
 
 interface CharacterGridProps {
   characters: CharacterWithCategory[];
@@ -29,25 +29,25 @@ export function CharacterGrid({ characters, onEdit, onDelete }: CharacterGridPro
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="mb-6 p-6 rounded-lg bg-[#141417] border border-[#27272A]"
+          className="mb-6 p-6 rounded-2xl bg-gradient-to-br from-[#16141C] to-[#1C1923] border border-[#322D3C]"
         >
-          <Swords className="h-16 w-16 text-[#DC2626]" />
+          <Heart className="h-16 w-16 text-[#E11D48]" />
         </motion.div>
         <motion.h3 
-          className="text-2xl font-semibold mb-2 text-[#FAFAFA]"
+          className="text-2xl font-semibold mb-2 bg-gradient-to-r from-[#FAF5FF] to-[#F43F5E] bg-clip-text text-transparent"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          No warriors yet
+          No waifus yet 💔
         </motion.h3>
         <motion.p 
-          className="text-[#71717A] mb-4 max-w-sm"
+          className="text-[#948CA5] mb-4 max-w-sm"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          Click <span className="font-semibold text-[#DC2626]">"Add Character"</span> to summon your first warrior
+          Click <span className="font-semibold text-[#E11D48]">"Add Waifu"</span> to add your first waifu to your collection ✨
         </motion.p>
       </motion.div>
     );

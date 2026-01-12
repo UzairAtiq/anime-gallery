@@ -62,22 +62,22 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-background to-secondary/5 p-4">
-      <Card className="w-full max-w-md shadow-xl animate-fade-in">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#E11D48]/5 via-[#0F0F14] to-[#F43F5E]/5 p-4">
+      <Card className="w-full max-w-md shadow-[0_0_50px_rgba(225,29,72,0.1)] border-[#322D3C] bg-[#16141C] rounded-2xl animate-fade-in">
         <CardHeader className="space-y-1 text-center">
-          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-            Anime Gallery
+          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-[#FAF5FF] via-[#E11D48] to-[#F43F5E] bg-clip-text text-transparent">
+            Waifu Gallery 💖
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-[#948CA5]">
             {mode === "login"
-              ? "Welcome back! Sign in to your account"
-              : "Create an account to get started"}
+              ? "Welcome back! Your waifus are waiting ✨"
+              : "Create an account to start your collection"}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="text-[#FAF5FF]">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -86,11 +86,12 @@ export default function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 autoComplete="email"
+                className="bg-[#0F0F14] border-[#322D3C] text-[#FAF5FF] placeholder:text-[#948CA5] focus:border-[#E11D48] rounded-xl"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password" className="text-[#FAF5FF]">Password</Label>
               <Input
                 id="password"
                 type="password"
@@ -99,11 +100,12 @@ export default function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 autoComplete={mode === "login" ? "current-password" : "new-password"}
+                className="bg-[#0F0F14] border-[#322D3C] text-[#FAF5FF] placeholder:text-[#948CA5] focus:border-[#E11D48] rounded-xl"
               />
             </div>
 
             {error && (
-              <div className="bg-destructive/10 text-destructive text-sm p-3 rounded-md">
+              <div className="bg-[#E11D48]/10 text-[#E11D48] text-sm p-3 rounded-xl border border-[#E11D48]/20">
                 {error}
               </div>
             )}
@@ -113,7 +115,7 @@ export default function LoginPage() {
               className="w-full" 
               disabled={isPending}
             >
-              {isPending ? "Loading..." : mode === "login" ? "Sign In" : "Sign Up"}
+              {isPending ? "Loading..." : mode === "login" ? "Enter Gallery 💖" : "Join Now ✨"}
             </Button>
 
             <div className="text-center text-sm">
@@ -123,10 +125,10 @@ export default function LoginPage() {
                   setMode(mode === "login" ? "signup" : "login");
                   setError("");
                 }}
-                className="text-primary hover:underline"
+                className="text-[#E11D48] hover:underline hover:text-[#F43F5E] transition-colors"
               >
                 {mode === "login"
-                  ? "Don't have an account? Sign up"
+                  ? "Don't have an account? Join now"
                   : "Already have an account? Sign in"}
               </button>
             </div>

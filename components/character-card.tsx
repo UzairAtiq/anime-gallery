@@ -33,8 +33,8 @@ export function CharacterCard({ character, onEdit, onDelete, index = 0 }: Charac
       whileTap={{ scale: 0.98 }}
       layout
     >
-      <Card className="group overflow-hidden bg-[#141417] border border-[#27272A] hover:border-[#DC2626]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(220,38,38,0.2)]">
-        <div className="relative aspect-[3/4] overflow-hidden">
+      <Card className="group overflow-hidden bg-[#16141C] border border-[#322D3C] rounded-2xl hover:border-[#E11D48]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(225,29,72,0.2),0_0_60px_rgba(244,63,94,0.1)]">
+        <div className="relative aspect-[3/4] overflow-hidden rounded-t-2xl">
           <Image
             src={character.image_url}
             alt={character.name}
@@ -44,11 +44,11 @@ export function CharacterCard({ character, onEdit, onDelete, index = 0 }: Charac
           />
           
           {/* Dark gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0F] via-transparent to-transparent opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F14] via-transparent to-transparent opacity-60" />
           
-          {/* Hover overlay with red tint */}
+          {/* Hover overlay with rose tint */}
           <motion.div 
-            className="absolute inset-0 bg-gradient-to-t from-[#DC2626]/30 via-transparent to-transparent"
+            className="absolute inset-0 bg-gradient-to-t from-[#E11D48]/30 via-[#F43F5E]/10 to-transparent"
             initial={{ opacity: 0 }}
             whileHover={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
@@ -65,10 +65,10 @@ export function CharacterCard({ character, onEdit, onDelete, index = 0 }: Charac
               <Button
                 size="icon"
                 variant="secondary"
-                className="h-9 w-9 bg-[#141417]/90 border border-[#27272A] hover:border-[#DC2626] hover:bg-[#1A1A1F] backdrop-blur-sm"
+                className="h-9 w-9 bg-[#16141C]/90 border border-[#322D3C] hover:border-[#E11D48] hover:bg-[#1C1923] backdrop-blur-sm rounded-xl"
                 onClick={() => onEdit(character)}
               >
-                <Pencil className="h-4 w-4 text-[#FAFAFA]" />
+                <Pencil className="h-4 w-4 text-[#FAF5FF]" />
               </Button>
             </motion.div>
             <motion.div 
@@ -94,16 +94,16 @@ export function CharacterCard({ character, onEdit, onDelete, index = 0 }: Charac
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.05 + 0.2 }}
             >
-              <span className="inline-flex items-center px-3 py-1 rounded text-xs font-medium bg-[#DC2626] text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-[#E11D48] to-[#F43F5E] text-white shadow-[0_0_15px_rgba(225,29,72,0.4)]">
                 {character.category.name}
               </span>
             </motion.div>
           )}
         </div>
         
-        <CardContent className="p-4 bg-[#141417] border-t border-[#27272A]">
+        <CardContent className="p-4 bg-[#16141C] border-t border-[#322D3C]">
           <motion.h3 
-            className="font-semibold text-lg truncate text-[#FAFAFA]"
+            className="font-semibold text-lg truncate text-[#FAF5FF]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: index * 0.05 + 0.1 }}

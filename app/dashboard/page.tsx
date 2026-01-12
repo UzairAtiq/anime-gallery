@@ -2,7 +2,7 @@
 
 import { useState, useTransition, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { PlusIcon, Folder, Swords } from "lucide-react";
+import { PlusIcon, Folder, Heart, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CharacterGrid } from "@/components/character-grid";
 import { AddCharacterModal } from "@/components/add-character-modal";
@@ -57,7 +57,7 @@ export default function DashboardPage() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to dismiss this warrior?")) return;
+    if (!confirm("Are you sure you want to release this waifu? 💔")) return;
 
     try {
       await deleteCharacter(id);
@@ -90,27 +90,27 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0D0D0F] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-[#0F0F14] via-[#16141C] to-[#0F0F14] flex items-center justify-center">
         <motion.div 
           className="text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
           <motion.div 
-            className="h-12 w-12 border-4 border-[#DC2626] border-t-transparent rounded-full mx-auto mb-4"
+            className="h-12 w-12 border-4 border-[#E11D48] border-t-transparent rounded-full mx-auto mb-4"
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
           />
-          <p className="text-[#71717A]">Gathering warriors...</p>
+          <p className="text-[#948CA5]">Your waifus are waiting 💖</p>
         </motion.div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#0D0D0F]">
+    <div className="min-h-screen bg-gradient-to-br from-[#0F0F14] via-[#16141C] to-[#0F0F14]">
       <motion.header 
-        className="sticky top-0 z-10 border-b border-[#27272A] bg-[#0D0D0F]/90 backdrop-blur-xl"
+        className="sticky top-0 z-10 border-b border-[#322D3C] bg-[#0F0F14]/90 backdrop-blur-xl"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4 }}
@@ -124,18 +124,18 @@ export default function DashboardPage() {
             >
               <div className="flex items-center gap-3">
                 <motion.div
-                  className="p-2 rounded-lg bg-[#DC2626]/20 border border-[#DC2626]/30"
+                  className="p-2 rounded-xl bg-gradient-to-br from-[#E11D48]/20 to-[#F43F5E]/10 border border-[#E11D48]/30"
                   whileHover={{ rotate: 5, scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <Swords className="h-6 w-6 text-[#DC2626]" />
+                  <Heart className="h-6 w-6 text-[#E11D48]" />
                 </motion.div>
                 <div>
-                  <h1 className="text-2xl sm:text-3xl font-bold text-[#FAFAFA]">
-                    Warrior Gallery
+                  <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-[#FAF5FF] to-[#E11D48] bg-clip-text text-transparent">
+                    Waifu Gallery
                   </h1>
-                  <p className="text-sm text-[#71717A] mt-0.5">
-                    {characters.length} warrior{characters.length !== 1 ? "s" : ""} in your dojo
+                  <p className="text-sm text-[#948CA5] mt-0.5">
+                    {characters.length} waifu{characters.length !== 1 ? "s" : ""} in your collection ✨
                   </p>
                 </div>
               </div>
@@ -156,21 +156,21 @@ export default function DashboardPage() {
                     </Button>
                   </motion.div>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-md border border-[#27272A] bg-[#141417] shadow-[0_0_50px_rgba(220,38,38,0.15)]">
+                <DialogContent className="sm:max-w-md border border-[#322D3C] bg-[#16141C] shadow-[0_0_50px_rgba(225,29,72,0.15)]">
                   <DialogHeader>
-                    <DialogTitle className="text-xl font-semibold text-[#FAFAFA]">Manage Categories</DialogTitle>
+                    <DialogTitle className="text-xl font-semibold text-[#FAF5FF]">Manage Categories</DialogTitle>
                   </DialogHeader>
                   <div className="space-y-5">
                     <form onSubmit={handleCreateCategory} className="space-y-3">
                       <div className="space-y-2">
-                        <Label htmlFor="category-name" className="text-sm font-medium text-[#FAFAFA]">New Category</Label>
+                        <Label htmlFor="category-name" className="text-sm font-medium text-[#FAF5FF]">New Category</Label>
                         <div className="flex gap-2">
                           <Input
                             id="category-name"
                             value={newCategoryName}
                             onChange={(e) => setNewCategoryName(e.target.value)}
                             placeholder="Enter category name"
-                            className="flex-1 bg-[#0D0D0F] border-[#27272A] text-[#FAFAFA] placeholder:text-[#71717A] focus:border-[#DC2626]"
+                            className="flex-1 bg-[#0F0F14] border-[#322D3C] text-[#FAF5FF] placeholder:text-[#948CA5] focus:border-[#E11D48]"
                           />
                           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <Button type="submit" size="icon" className="shrink-0">
@@ -182,16 +182,16 @@ export default function DashboardPage() {
                     </form>
                     
                     <div className="space-y-3">
-                      <Label className="text-sm font-medium text-[#FAFAFA]">Existing Categories</Label>
+                      <Label className="text-sm font-medium text-[#FAF5FF]">Existing Categories</Label>
                       <AnimatePresence mode="popLayout">
                         {categories.length === 0 ? (
                           <motion.p 
-                            className="text-sm text-[#71717A] py-8 text-center"
+                            className="text-sm text-[#948CA5] py-8 text-center"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                           >
-                            No categories yet
+                            No categories yet ✨
                           </motion.p>
                         ) : (
                           <div className="space-y-2 max-h-60 overflow-y-auto pr-1">
@@ -202,7 +202,7 @@ export default function DashboardPage() {
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: 10 }}
                                 transition={{ delay: index * 0.05 }}
-                                className="text-sm py-2.5 px-4 rounded-lg bg-[#27272A] border border-[#3F3F46] text-[#FAFAFA] font-medium"
+                                className="text-sm py-2.5 px-4 rounded-xl bg-[#2D2837] border border-[#3D3548] text-[#FAF5FF] font-medium"
                               >
                                 {category.name}
                               </motion.div>
@@ -231,8 +231,8 @@ export default function DashboardPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#FAFAFA]">Your Warriors</h2>
-            <p className="text-[#71717A] mt-1.5 text-sm sm:text-base">Manage your elite collection</p>
+            <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#FAF5FF] to-[#F43F5E] bg-clip-text text-transparent">Your Waifus</h2>
+            <p className="text-[#948CA5] mt-1.5 text-sm sm:text-base">Curate your personal collection 💖</p>
           </motion.div>
           <AddCharacterModal categories={categories} />
         </div>
